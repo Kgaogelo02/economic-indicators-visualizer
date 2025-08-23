@@ -50,6 +50,10 @@ countries = st.sidebar.multiselect(
     ],
     default=["South Africa", "Nigeria"]
 )
+# Check if user selected at least one country
+if not countries:
+    st.warning("Please select at least one country from the sidebar.")
+    st.stop()  # Stop execution until user selects a country
 
 # Indicators
 indicators = { 
