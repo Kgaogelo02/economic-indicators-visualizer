@@ -93,7 +93,8 @@ log_scale = st.sidebar.checkbox("Log Scale (Y-axis)", value=False)
 # Fetch Data from World Bank API
 # --------------------------------------------------------------------
 import time
-def fetch_data(country, indicator, start, end):
+
+def fetch_data(country, indicator, start, end, retries=3):
     url = f"http://api.worldbank.org/v2/country/{country}/indicator/{indicator}?date={start}:{end}&format=json"
     response = requests.get(url)
     if response.status_code == 200:
