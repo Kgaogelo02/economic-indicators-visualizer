@@ -1,4 +1,4 @@
-# Economic Indicators Visualizer 📊
+# Economic Indicators Visualizer
 This Streamlit web app allows users to explore key World Bank economic data across multiple countries. Users can select countries, choose a year range, and visualize a wide range of indicators, including:
 - GDP (current US$)
 - GDP growth (%)
@@ -14,7 +14,7 @@ This Streamlit web app allows users to explore key World Bank economic data acro
 - Current account balance (% of GDP)
 - Government debt (% of GDP)
 - Poverty headcount ratio ($2.15/day)  
-## 🌍 Features
+## Features
 - Choose multiple countries from the sidebar  
 - Select economic indicators to compare  
 - Interactive charts powered by matplotlib
@@ -27,5 +27,5 @@ This Streamlit web app allows users to explore key World Bank economic data acro
 - Requests – To fetch data from the World Bank API.
 - Matplotlib – Optional, for additional plotting in main.py.
 
-## 🚀 Live Demo
-👉 [Click here to try it](https://economic-indicators-visualizer-nhnpmneywg2rvepyjybwsx.streamlit.app/)
+##  Live Demo
+ [Click here to try it](https://economic-indicators-visualizer-nhnpmneywg2rvepyjybwsx.streamlit.app/)
