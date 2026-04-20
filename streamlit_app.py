@@ -15,12 +15,7 @@ st.set_page_config(
 st.title("📊 Economic Indicators Visualizer")
 st.markdown("Explore World Bank economic data interactively.")
 
-# ----------------------
-# Sidebar
-# ----------------------
 st.sidebar.header("Options")
-
-# Select country/countries
 countries = st.sidebar.multiselect(
     "Select Country/Countries",
     [
@@ -112,7 +107,7 @@ def fetch_data(country, indicator, start, end, retries=3):
         except Exception as e:
             st.error(f"Error parsing data for {country}: {e}")
     else:
-        st.error(f"❌Failed to fetch data for {country}")
+        st.error(f"Failed to fetch data for {country}")
     return pd.DataFrame(columns=["Country", "Year", "Value"])
 
 # ----------------------
@@ -203,7 +198,7 @@ if not all_data.empty:
     )
     st.plotly_chart(fig, use_container_width=True)
 
-    st.subheader("📄 Raw Data")
+    st.subheader("Raw Data")
     st.dataframe(all_data)
 else:
     st.warning("No data available for the selected options.")
@@ -228,7 +223,7 @@ else:
     # ---------------------------------------------------------------------
     # Download Option
     # ---------------------------------------------------------------------
-    st.subheader("⬇️ Download Data")
+    st.subheader("Download Data")
     csv = all_data.to_csv(index=False).encode("utf-8")
     st.download_button(
         label="Download CSV",
