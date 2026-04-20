@@ -3,9 +3,6 @@ import pandas as pd
 import plotly.express as px
 import requests
 
-# ----------------------
-# Streamlit Page Config
-# ----------------------
 st.set_page_config(
     page_title="Economic Indicators Visualizer",
     page_icon="📊",
