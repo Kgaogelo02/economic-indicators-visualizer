@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-# --- Mapping of countries to World Bank codes ---
 country_codes = {
     # Africa
     "South Africa": "ZA", "Nigeria": "NG", "Kenya": "KE", "Egypt": "EG", "Ghana": "GH",
@@ -30,7 +29,6 @@ country_codes = {
     "Australia": "AU", "New Zealand": "NZ"
 }
 
-# --- Indicators dictionary ---
 indicators = {
     "GDP (current US$)": "NY.GDP.MKTP.CD",
     "GDP growth (%)": "NY.GDP.MKTP.KD.ZG",
@@ -70,9 +68,8 @@ def fetch_data(country_code, indicator):
         return None
 
 # --- Streamlit App ---
-st.title("🌍 Economic Indicators Visualizer")
+st.title("Economic Indicators Visualizer")
 
-# Sidebar country/indicator selection
 countries = st.sidebar.multiselect(
     "Select Country/Countries", list(country_codes.keys()),
     default=["South Africa", "Nigeria"]
@@ -95,7 +92,7 @@ else:
     plt.ylabel(indicator_name)
     plt.grid(True)
     plt.legend()
-    st.pyplot(plt)   # ✅ Use Streamlit to render the figure
+    st.pyplot(plt)
 
 
 
