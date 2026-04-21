@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import requests
+import time
 
 st.set_page_config(
     page_title="Economic Indicators Visualizer",
@@ -81,11 +82,7 @@ start_year, end_year = st.sidebar.slider(
 # Log scale option
 log_scale = st.sidebar.checkbox("Log Scale (Y-axis)", value=False)
 
-# --------------------------------------------------------------------
 # Fetch Data from World Bank API
-# --------------------------------------------------------------------
-import time
-
 def fetch_data(country, indicator, start, end, retries=3):
     url = f"http://api.worldbank.org/v2/country/{country}/indicator/{indicator}?date={start}:{end}&format=json"
     response = requests.get(url)
@@ -107,9 +104,7 @@ def fetch_data(country, indicator, start, end, retries=3):
         st.error(f"Failed to fetch data for {country}")
     return pd.DataFrame(columns=["Country", "Year", "Value"])
 
-# ----------------------
 # Prepare Data
-# ----------------------
 all_data = pd.DataFrame()
 
 for c in countries:
@@ -181,9 +176,7 @@ for c in countries:
     df = fetch_data(country_code, indicator_code, start_year, end_year)
     all_data = pd.concat([all_data, df], ignore_index=True)
 
-# ----------------------
 # Visualization
-# ----------------------
 if not all_data.empty:
     fig = px.line(
         all_data,
@@ -200,9 +193,7 @@ if not all_data.empty:
 else:
     st.warning("No data available for the selected options.")
     
-    # ----------------------
     # Extra Comparison: Latest Year
-    # ----------------------
     latest_year = all_data["Year"].max()
     latest_data = all_data[all_data["Year"] == latest_year]
 
@@ -217,9 +208,7 @@ else:
         )
         st.plotly_chart(fig_bar, use_container_width=True)
 
-    # ---------------------------------------------------------------------
     # Download Option
-    # ---------------------------------------------------------------------
     st.subheader("Download Data")
     csv = all_data.to_csv(index=False).encode("utf-8")
     st.download_button(
